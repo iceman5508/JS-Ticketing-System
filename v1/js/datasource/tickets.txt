@@ -1,0 +1,34 @@
+{
+  "data": [
+    [{
+        'id' : 1,
+        'date' : 8-8-2017,
+        'author' : 'Isaac'
+        'email' : 'isaac@email.com',
+        'assignedTo' : 'unassigned',
+        'department' : 'blazer Tech',
+        'category' : 'software bug',
+        'status' : 'open',
+        'closedBy' 'N/A',
+        'colsed_date' : 'N/A'
+        'body' : 'Hello There I keep getting logged out of the system',
+        notes: []
+    }],
+    [{
+            'id' : 2,
+            'date' : 8-9-2017,
+            'author' : 'Jacob'
+            'email' : 'jacob@email.com',
+            'assignedTo' : 'unassigned',
+            'department' : 'help desk',
+            'category' : 'user info',
+            'status' : 'closed',
+            'closedBy' 'Zach',
+            'colsed_date' : '8-9-2017'
+            'body' : 'I need my user login information',
+            notes: [{'id' : 1, 'author' : 'Zach', 'body' : 'Reset user informaiton', 'date' : '8-9-2017'}]
+        }]
+
+
+      ]
+ }

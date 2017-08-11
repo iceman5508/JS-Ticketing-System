@@ -1,0 +1,63 @@
+label, input { display:block; }
+input.text { margin-bottom:12px; width:95%; padding: .4em; }
+fieldset { padding:0; border:0; margin-top:25px; }
+h1 { font-size: 1.2em; margin: .6em 0; }
+div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px;
+    text-align: left; }
+.dtTbl tr:hover {
+    background-color: #66a0ff;
+    color: #ffffff;
+    cursor: pointer;
+}
+.formItem{
+    border-top:1px dashed #eff1f4;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.modal .first {
+   margin-top:20px;
+    margin-bottom: 20px;
+}
+#tk-body, #make-body
+{
+    position: relative;
+    height:10em;
+    resize: none;
+}
+
+#note-body{ resize: none;  }
+.modal-hide {display: none; }
+
+
+
+.search-css{
+    margin: auto !important;
+    width: 50% !important;
+    margin-bottom: 20px !important;
+}
+
+.search-css label {
+    float: left !important;
+}
+
+a.dt-button.posButt
+{
+    margin-bottom:0px;
+    margin-top:20px;
+    margin-left:10px;
+    color: black;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    background: rgb(66, 184, 221);
+}
+
+a.dt-button.posButt:hover, a.dt-button.posButt:active
+{
+
+    color: white;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    background: rgb(66, 225, 22); /* light blue */
+
+}
