@@ -1,0 +1,142 @@
+#dialog-form { padding: 0px; }
+
+#dialog-form ul{ list-style-type: none; }
+
+#dialog-form ul li {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#dialog-form ul li span { font-weight: 400; }
+
+.left {
+    float: left;
+    text-align: left;
+}
+
+.right { float: right; }
+
+#history ul li span:before { content:"• "; }
+
+#fcates, #notesContainer {
+    background-color: grey;
+    padding: 5px;
+    text-align: center;
+}
+
+#actionButtons{
+    background-color: tan;
+    padding: 5px;
+    text-align: center;
+}
+
+.pure-button-active {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    background: rgb(66, 184, 221);
+}
+
+.button-success {
+    background: rgb(28, 184, 65);
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+#notesBD{
+    position: relative;
+    height:4em;
+    resize: none;
+}
+
+#make-body{
+    position: relative;
+    height:10em;
+    resize: none;
+}
+
+#notesTable{ margin-top: 2px; }
+
+#notesTable span{ display: block; }
+
+.dtTbl tr:hover {
+    background-color: #66a0ff;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+#notesPan {
+    display: inline-block;
+    overflow-y: auto;
+    max-height:100px;
+    width: 100%;
+}
+
+#notesPan table {
+    text-align: center;
+    margin: auto;
+    word-wrap: break-word;
+}
+
+#historyList {
+    display: inline-block;
+    overflow-y: auto;
+    max-height:160px;
+
+}
+
+#historyList ul {
+    text-align: left;
+    margin: auto;
+}
+
+.modal-hide {display: none; }
+
+.center-text { text-align: center; }
+
+#searchFilter{
+    position: relative;
+    float: right;
+    margin-bottom: 10px;
+    margin-right: 1%;
+    margin-top: 10px;
+}
+
+.positionLeft{
+    position: relative;
+    float: left;
+    margin-bottom: 10px;
+    margin-left: 1%;
+    margin-top: 10px;
+}
+
+.overSla { background-color:rgb(200, 50, 50); }
+
+.overSla:hover{
+    color: #ffffff !important;
+    cursor: pointer;
+}
+
+.CreateformItem {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+#stage1, #stage2{
+    display: inline-block;
+    overflow-y: auto;
+    max-height:200px;
+}
+
+#stage1 #faq-accordion, #stage1 #cat-accordion {
+    text-align: center;
+    margin: auto;
+}
+
+.center {
+    position: relative;
+    margin: auto;
+    left:40%;
+}

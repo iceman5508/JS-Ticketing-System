@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ticket System v2</title>
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"
+              integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.semanticui.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.2/css/select.dataTables.min.css">
+        <link rel="stylesheet" href="style/main.css">
+    </head>
+    <body>
+
+
+    <div class="pure-g">
+        <div class="pure-form pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-1">
+
+            <button class="pure-input-1-24 button-success pure-button positionLeft" id="newTik">New Ticket</button>
+
+            <select class="pure-input-1-24 positionLeft" id="slaFilter">
+                <option value="null" disabled selected>- Ticket Lifespan -</option>
+                <option>All</option>
+                <option>0 - 12</option>
+                <option>12 - 24</option>
+                <option>24 - 48</option>
+                <option> > 48</option>
+            </select>
+
+            <select class="pure-input-1-24 positionLeft" id="tkFilter">
+                <option value="null" disabled selected>- Ticket Type -</option>
+                <option>All</option>
+                <option>Assigned To Me</option>
+                <option>Open</option>
+                <option>Closed</option>
+            </select>
+
+            <input type="text" class="pure-input-1-24" placeholder="searching"  id="searchFilter">
+
+        </div>
+
+        <!--main table for ticket list -->
+        <div class="pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-1">
+            <table id="main-ticket" class="ui celled table dtTbl" cellspacing="0" width="100%"> </table>
+        </div>
+
+        <!--ticket view and modal ------>
+        <div id="dialog-form" class="modal">
+            <div class="pure-g">
+                <div class="pure-u-1 pure-u-sm-1  pure-u-md-1-2  pure-u-lg-1-2 left">
+                    <ul>
+                        <li ><h3 class="uname" id="uname"></h3></li>
+                        <li>Sonis ID: <span id="uid"> IP11421</span> </li>
+                        <li>Email: <span id="uemail"></span></li>
+                        <li>Category: <span id="ucat"> </span></li>
+                        <li>Department: <span id="udept"></span> </li>
+                        <li>Agent: <span id="uage"></span>
+                        </li>
+                       <span id="selfAssignSpan">
+                           <input id="selfAgent" type="checkbox" onclick="selfAssign();" value=""> Assign To Self
+                       </span>
+                        <button class="button-success pure-button" id="reOpen" onclick="reOpenTicket();">Reopen Ticket</button>
+                    </ul>
+
+                </div>
+                <div id="history" class="pure-u-1 pure-u-sm-1  pure-u-md-1-2  pure-u-lg-1-2 right">
+                    <ul>
+                        <li ><h3 class="uname">Ticket History</h3></li>
+                    </ul>
+                    <div id="historyList">
+                        <ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="actionButtons">
+                <button class="pure-button pure-button-active">Reset Password</button>
+                <button class="pure-button pure-button-active">Send Welcome Email</button>
+                <button class="pure-button pure-button-active">View Courses</button>
+            </div>
+
+            <div class="pure-g" id="notesContainer">
+                <div class=" pure-form pure-u-1">
+                     <textarea class="pure-input-1" placeholder="Enter Note..." id="notesBD"></textarea>
+                </div>
+            </div>
+
+            <div id="notesPan">
+                <table class="pure-table" width="100%" id="notesTable">
+                    <tbody>
+
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+        <!--ticket view and modal ------>
+
+
+        <!----assign ticket modal ---------------->
+        <div id="assign" class="modal-hide dtTbl pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-1">
+            <table id="depts" class="ui celled table pure-table-striped" cellspacing="0" width="100%">
+            </table>
+
+            <table id="agns" class="ui celled table pure-table-striped" cellspacing="0" width="100%">
+            </table>
+        </div>
+
+        <!---assign ticket modal------------------>
+
+        <div id="createModal"  class="modal">
+            <div id="stage1" class="pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-1">
+                <h3>Select Faq</h3>
+                <div id="faq-accordion"></div>
+            </div>
+
+            <div id="stage2" class="pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-1">
+                <h3>Select Category</h3>
+                <div id="cat-accordion"></div>
+            </div>
+
+            <form class="pure-form pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-1" id="stage3">
+                <input type="text" class="pure-input-1 CreateformItem" placeholder="Title" id="make-title" required>
+                <input type="email" class="pure-input-1 CreateformItem" placeholder="Client Email" id="make-email" required>
+                <textarea class="pure-input-1 CreateformItem" id="make-body" placeholder="Content" required></textarea>
+               <div class="CreateformItem">
+                    <label for="make-close" class="pure-checkbox ">
+                        <input id="make-close" type="checkbox" checked> Close
+                    </label>
+                   <label for="make-assign" >
+                       <input id="make-assign" type="checkbox" checked> Assign To Me
+                   </label>
+               </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.2.2/js/dataTables.select.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
+    <script src="js/customFunctions.js"></script>
+    <script src="js/datasource/data.js"></script>
+    <script src="service/ticket-service.js"></script>
+    <script src="js/interaction.js"></script>
+    <script src="js/dt.js"></script>
+    </body>
+</html>
