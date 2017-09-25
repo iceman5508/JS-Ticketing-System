@@ -44,7 +44,7 @@ $(document).ready(function() {
         "bInfo": true,
         "bAutoWidth": false,
         select: true,
-        "dom": '<"center"i>t<"clear">',,
+        "dom": '<"center"i>t<"clear">',
         "order": [[0, "desc"]],
 
         initComplete: function () {
